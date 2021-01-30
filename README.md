@@ -12,7 +12,7 @@ To create a build, run `make build` from the root directory. If you copy this to
 ## Usage
 
 ```bash
-./fsand changing_dir ./to_run.sh
+fsand changing_dir ./to_run.sh
 ```
 
 ## Development
