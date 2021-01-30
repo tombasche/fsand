@@ -23,8 +23,6 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	renameCh := make(chan bool)
-	removeCh := make(chan bool)
 	errCh := make(chan error)
 
 	go func() {
@@ -36,31 +34,6 @@ func main() {
 				}
 			case err := <-watcher.Errors:
 				errCh <- err
-			}
-		}
-	}()
-	filename := args.Filename
-	go func() {
-		for {
-			select {
-			case <-renameCh:
-				err = cli.WaitUntilFind(filename)
-				if err != nil {
-					log.Fatalln(err)
-				}
-				err = watcher.Add(filename)
-				if err != nil {
-					log.Fatalln(err)
-				}
-			case <-removeCh:
-				err = cli.WaitUntilFind(filename)
-				if err != nil {
-					log.Fatalln(err)
-				}
-				err = watcher.Add(filename)
-				if err != nil {
-					log.Fatalln(err)
-				}
 			}
 		}
 	}()
