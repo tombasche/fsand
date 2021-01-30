@@ -4,6 +4,11 @@ Pronounced 'F-sand'
 
 A simple command line utility to run a script when either a file or a file within a directory changes. This is built entirely off fsnotify and beeep and I take no credit for any of those projects. This is merely the glue that binds; in the end isn't that what most software is anyway?
 
+## Installation
+
+To create a build, run `make build` from the root directory. If you copy this to your `/usr/local/bin` the script you specify to run will still be relative to the current working directory.
+
+
 ## Usage
 
 ```bash
